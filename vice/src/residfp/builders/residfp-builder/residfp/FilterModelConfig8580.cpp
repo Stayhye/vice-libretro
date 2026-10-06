@@ -124,8 +124,7 @@ FilterModelConfig8580* FilterModelConfig8580::getInstance()
     return instance.get();
 }
 
-#pragma GCC push_options
-#pragma GCC optimize ("O1")
+__attribute__((optimize("-O0")))
 FilterModelConfig8580::FilterModelConfig8580() :
     voice_voltage_range(0.2), // FIXME measure
     voice_DC_voltage(4.80), // FIXME was 4.76
@@ -253,7 +252,6 @@ FilterModelConfig8580::FilterModelConfig8580() :
         }
     }
 }
-#pragma GCC pop_options
 
 FilterModelConfig8580::~FilterModelConfig8580()
 {

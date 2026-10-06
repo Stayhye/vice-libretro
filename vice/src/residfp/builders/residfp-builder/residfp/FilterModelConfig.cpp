@@ -107,6 +107,7 @@ FilterModelConfig* FilterModelConfig::getInstance()
     return instance.get();
 }
 
+__attribute__((optimize("-O0")))
 FilterModelConfig::FilterModelConfig() :
     voice_voltage_range(1.5),
     voice_DC_voltage(5.0),
