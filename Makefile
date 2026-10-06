@@ -235,6 +235,17 @@ else ifeq ($(platform), theos_ios)
    COMMONFLAGS += -DHAVE_POSIX_MEMALIGN=1 -marm
    include $(THEOS)/makefiles/common.mk
    LIBRARY_NAME = $(TARGET_NAME)_libretro_ios
+   
+# PS2
+else ifeq ($(platform), ps2)
+   TARGET := $(TARGET_NAME)_libretro_$(platform).a
+   CC = mips64r5900el-ps2-elf-gcc$(EXE_EXT)
+   CXX = mips64r5900el-ps2-elf-g++$(EXE_EXT)
+   AR = mips64r5900el-ps2-elf-ar$(EXE_EXT)
+   ENDIANNESS_DEFINES += -DLSB_FIRST -DALIGN_DWORD
+   FLAGS += -DPS2 -G0 -DHAVE_NO_LANGEXTRA -O3 -DABGR1555
+   STATIC_LINKING = 1
+   OLD_GCC = 1
 
 # Blackberry
 else ifeq ($(platform), qnx)
